@@ -1,0 +1,973 @@
+
+import os
+
+base_dir = "/mnt/agents/output/avelon-lanka"
+
+# Write index.html - Main Homepage
+index_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avelon Lanka - Luxury Sri Lankan Travel Experiences. Discover the soul of Sri Lanka with tailor-made luxury journeys, wildlife safaris, beach holidays, and cultural tours.">
+    <meta name="keywords" content="Sri Lanka luxury travel, Sri Lanka tours, luxury holidays Sri Lanka, wildlife safaris, beach holidays, cultural tours, honeymoon Sri Lanka, Avelon Lanka">
+    <meta name="author" content="Avelon Lanka">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avelonlanka.com/">
+    <meta property="og:title" content="Avelon Lanka | Luxury Sri Lankan Travel Experiences">
+    <meta property="og:description" content="Discover the soul of Sri Lanka with tailor-made luxury journeys crafted by local experts.">
+    <meta property="og:image" content="https://avelonlanka.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://avelonlanka.com/">
+    <meta property="twitter:title" content="Avelon Lanka | Luxury Sri Lankan Travel Experiences">
+    <meta property="twitter:description" content="Discover the soul of Sri Lanka with tailor-made luxury journeys crafted by local experts.">
+    <meta property="twitter:image" content="https://avelonlanka.com/images/og-image.jpg">
+    
+    <title>Avelon Lanka | Luxury Sri Lankan Travel Experiences</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/categories.css">
+    <link rel="stylesheet" href="css/packages.css">
+    <link rel="stylesheet" href="css/destinations.css">
+    <link rel="stylesheet" href="css/tour-builder.css">
+    <link rel="stylesheet" href="css/testimonials.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Avelon Lanka",
+        "description": "Luxury Sri Lankan Travel Experiences",
+        "url": "https://avelonlanka.com",
+        "logo": "https://avelonlanka.com/images/logo.png",
+        "image": "https://avelonlanka.com/images/og-image.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "LK",
+            "addressLocality": "Colombo",
+            "addressRegion": "Western Province"
+        },
+        "telephone": "+94-XXX-XXXXXXX",
+        "email": "hello@avelonlanka.com",
+        "sameAs": [
+            "https://facebook.com/avelonlanka",
+            "https://instagram.com/avelonlanka",
+            "https://twitter.com/avelonlanka"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <span class="preloader-brand">Avelon</span>
+                <span class="preloader-sub">Lanka</span>
+            </div>
+            <div class="preloader-line">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-main">Avelon</span>
+                <span class="logo-sub">Lanka</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#categories" class="nav-link">Experiences</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#destinations" class="nav-link">Destinations</a>
+                <a href="#testimonials" class="nav-link">Stories</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#blog" class="nav-link">Journal</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="tel:+94XXXXXXXXX" class="nav-phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+94 77 123 4567</span>
+                </a>
+                <a href="#contact" class="nav-cta">Plan Your Trip</a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#categories" class="mobile-link">Experiences</a>
+            <a href="#packages" class="mobile-link">Packages</a>
+            <a href="#destinations" class="mobile-link">Destinations</a>
+            <a href="#testimonials" class="mobile-link">Stories</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
+            <a href="#blog" class="mobile-link">Journal</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+            <a href="tel:+94771234567" class="mobile-phone">
+                <i class="fas fa-phone-alt"></i> +94 77 123 4567
+            </a>
+            <a href="#contact" class="mobile-cta">Plan Your Trip</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1588258525935-6b5d1f4f6c3e?w=1920&q=80');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1920&q=80');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=80');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1920&q=80');">
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-gem"></i>
+                <span>Premium Luxury Travel</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-line">Discover Sri Lanka</span>
+                <span class="hero-line accent">Beyond the Ordinary</span>
+            </h1>
+            <p class="hero-subtitle">
+                Crafted journeys through paradise. Where ancient wonders meet tropical luxury, 
+                and every moment becomes a timeless memory.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#packages" class="btn btn-primary">
+                    <span>Explore Tours</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#tour-builder" class="btn btn-outline">
+                    <span>Customize Your Journey</span>
+                    <i class="fas fa-sliders-h"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+        
+        <!-- Floating Search Card -->
+        <div class="hero-search-card">
+            <div class="search-card-header">
+                <i class="fas fa-search"></i>
+                <span>Plan Your Journey</span>
+            </div>
+            <div class="search-card-body">
+                <div class="search-field">
+                    <label><i class="fas fa-map-marker-alt"></i> Destination</label>
+                    <select id="searchDestination">
+                        <option value="">All Destinations</option>
+                        <option value="sigiriya">Sigiriya</option>
+                        <option value="ella">Ella</option>
+                        <option value="kandy">Kandy</option>
+                        <option value="galle">Galle</option>
+                        <option value="mirissa">Mirissa</option>
+                        <option value="yala">Yala</option>
+                        <option value="nuwara-eliya">Nuwara Eliya</option>
+                        <option value="colombo">Colombo</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label><i class="fas fa-calendar-alt"></i> Travel Dates</label>
+                    <input type="date" id="searchDate" placeholder="Select dates">
+                </div>
+                <div class="search-field">
+                    <label><i class="fas fa-users"></i> Travelers</label>
+                    <select id="searchTravelers">
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5+ People</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label><i class="fas fa-tag"></i> Experience</label>
+                    <select id="searchExperience">
+                        <option value="">All Experiences</option>
+                        <option value="luxury">Luxury Escapes</option>
+                        <option value="wildlife">Wildlife Safaris</option>
+                        <option value="beach">Beach Holidays</option>
+                        <option value="cultural">Cultural Tours</option>
+                        <option value="wellness">Ayurveda & Wellness</option>
+                        <option value="honeymoon">Honeymoon</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="hill-country">Hill Country</option>
+                    </select>
+                </div>
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                    <span>Find Experiences</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="hero-slider-controls">
+            <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+            </div>
+            <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <div class="about-img-main">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80" alt="Sri Lankan luxury villa with infinity pool overlooking tropical landscape" loading="lazy">
+                        <div class="about-img-badge">
+                            <span class="badge-number">15+</span>
+                            <span class="badge-text">Years of<br>Excellence</span>
+                        </div>
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80" alt="Traditional Sri Lankan cultural dance performance" loading="lazy">
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="section-tag">
+                        <span class="tag-line"></span>
+                        <span class="tag-text">About Avelon Lanka</span>
+                    </div>
+                    <h2 class="section-title">The Soul of Sri Lankan<br><span class="accent">Luxury Travel</span></h2>
+                    <p class="about-text">
+                        Born from a deep love for our island home, Avelon Lanka curates extraordinary journeys 
+                        that reveal the true essence of Sri Lanka. We believe luxury is not just about five-star 
+                        hotels — it is about authentic connections, hidden discoveries, and moments that take 
+                        your breath away.
+                    </p>
+                    <p class="about-text">
+                        Our team of passionate local experts handcrafts every itinerary, blending world-class 
+                        comfort with genuine Sri Lankan warmth. From ancient temples to pristine beaches, 
+                        from leopard-spotting safaris to tea plantation retreats — we create experiences 
+                        that linger in your heart long after you return home.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Authentic Hospitality</h4>
+                                <p>Genuine Sri Lankan warmth in every interaction</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Local Experts</h4>
+                                <p>Insider knowledge from born-and-raised guides</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Tailor-Made Journeys</h4>
+                                <p>Every trip designed uniquely for you</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Sustainable Tourism</h4>
+                                <p>Travel that gives back to our communities</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Start Your Journey</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <div class="section-header center">
+                <div class="section-tag center">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Our Experiences</span>
+                </div>
+                <h2 class="section-title">Curated Journeys for<br><span class="accent">Every Traveler</span></h2>
+                <p class="section-subtitle">
+                    From romantic escapes to wild adventures, discover the perfect Sri Lankan experience
+                </p>
+            </div>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Featured Packages</span>
+                </div>
+                <h2 class="section-title">Handcrafted<br><span class="accent">Tour Packages</span></h2>
+                <p class="section-subtitle">
+                    Meticulously designed itineraries that showcase the very best of Sri Lanka
+                </p>
+            </div>
+            
+            <div class="packages-filter">
+                <button class="filter-btn active" data-filter="all">All Packages</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="beach">Beach</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="honeymoon">Honeymoon</button>
+            </div>
+            
+            <div class="packages-grid" id="packagesGrid">
+                <!-- Packages rendered via JS -->
+            </div>
+            
+            <div class="packages-cta">
+                <a href="#tour-builder" class="btn btn-primary">
+                    <span>View All Packages</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header center">
+                <div class="section-tag center">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Explore</span>
+                </div>
+                <h2 class="section-title">Iconic<br><span class="accent">Destinations</span></h2>
+                <p class="section-subtitle">
+                    From ancient citadels to pristine coastlines — discover Sri Lanka's most captivating places
+                </p>
+            </div>
+            
+            <div class="destinations-grid" id="destinationsGrid">
+                <!-- Destinations rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Tour Builder Section -->
+    <section id="tour-builder" class="tour-builder">
+        <div class="tour-builder-bg">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Tropical beach background" loading="lazy">
+            <div class="tour-builder-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="tour-builder-content">
+                <div class="tour-builder-info">
+                    <div class="section-tag">
+                        <span class="tag-line"></span>
+                        <span class="tag-text">Personalized</span>
+                    </div>
+                    <h2 class="section-title">Build Your<br><span class="accent">Dream Journey</span></h2>
+                    <p class="tour-builder-desc">
+                        Tell us your vision, and our travel designers will craft a bespoke Sri Lankan 
+                        experience tailored exclusively to your desires, timeline, and travel style.
+                    </p>
+                    <div class="tour-builder-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Customizable</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Local Guidance</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Best Price Guarantee</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Concierge Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour-builder-form-wrapper">
+                    <form class="tour-builder-form" id="tourBuilderForm">
+                        <div class="form-header">
+                            <h3><i class="fas fa-magic"></i> Design Your Trip</h3>
+                            <p>Get a personalized itinerary within 24 hours</p>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Full Name *</label>
+                                <input type="text" name="fullName" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-envelope"></i> Email *</label>
+                                <input type="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-phone"></i> Phone / WhatsApp</label>
+                                <input type="tel" name="phone" placeholder="+44 7700 900000">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-users"></i> Number of Travelers</label>
+                                <select name="travelers">
+                                    <option value="1">1 Person</option>
+                                    <option value="2" selected>2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Arrival Date</label>
+                                <input type="date" name="arrivalDate">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-check"></i> Departure Date</label>
+                                <input type="date" name="departureDate">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-map-marker-alt"></i> Destinations You Want to Visit</label>
+                            <div class="destination-checkboxes">
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="sigiriya"> <span>Sigiriya</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="kandy"> <span>Kandy</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="ella"> <span>Ella</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="nuwara-eliya"> <span>Nuwara Eliya</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="galle"> <span>Galle</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="mirissa"> <span>Mirissa</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="yala"> <span>Yala</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="arugam-bay"> <span>Arugam Bay</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="destinations" value="colombo"> <span>Colombo</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-wallet"></i> Budget Per Person (USD)</label>
+                                <select name="budget">
+                                    <option value="">Select Budget</option>
+                                    <option value="1000-2000">$1,000 - $2,000</option>
+                                    <option value="2000-3500">$2,000 - $3,500</option>
+                                    <option value="3500-5000">$3,500 - $5,000</option>
+                                    <option value="5000+">$5,000+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-star"></i> Travel Style</label>
+                                <select name="travelStyle">
+                                    <option value="">Select Style</option>
+                                    <option value="luxury">Ultra Luxury</option>
+                                    <option value="premium">Premium Comfort</option>
+                                    <option value="adventure">Adventure Seeker</option>
+                                    <option value="family">Family Friendly</option>
+                                    <option value="romantic">Romantic / Honeymoon</option>
+                                    <option value="wellness">Wellness & Ayurveda</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-comment-alt"></i> Special Requests or Notes</label>
+                            <textarea name="notes" rows="3" placeholder="Tell us about any special occasions, dietary requirements, mobility needs, or specific experiences you're dreaming of..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Request Custom Itinerary</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <p class="form-privacy">
+                            <i class="fas fa-lock"></i> Your information is secure. We will never share your details.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header center">
+                <div class="section-tag center">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Traveler Stories</span>
+                </div>
+                <h2 class="section-title">Memories That<br><span class="accent">Last Forever</span></h2>
+                <p class="section-subtitle">
+                    Hear from travelers who discovered Sri Lanka with Avelon
+                </p>
+            </div>
+            
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <!-- Testimonials rendered via JS -->
+            </div>
+            
+            <div class="testimonials-nav">
+                <button class="testimonial-prev" id="testimonialPrev" aria-label="Previous testimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="testimonial-dots" id="testimonialDots"></div>
+                <button class="testimonial-next" id="testimonialNext" aria-label="Next testimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header center">
+                <div class="section-tag center">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Visual Journey</span>
+                </div>
+                <h2 class="section-title">Through the<br><span class="accent">Lens</span></h2>
+                <p class="section-subtitle">
+                    Glimpses of paradise captured by our travelers and photographers
+                </p>
+            </div>
+            
+            <div class="gallery-filter">
+                <button class="gallery-filter-btn active" data-filter="all">All</button>
+                <button class="gallery-filter-btn" data-filter="landscapes">Landscapes</button>
+                <button class="gallery-filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="gallery-filter-btn" data-filter="culture">Culture</button>
+                <button class="gallery-filter-btn" data-filter="beaches">Beaches</button>
+                <button class="gallery-filter-btn" data-filter="luxury">Luxury</button>
+            </div>
+            
+            <div class="gallery-masonry" id="galleryMasonry">
+                <!-- Gallery items rendered via JS -->
+            </div>
+        </div>
+        
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="lightbox-content">
+                <img src="" alt="Gallery image" id="lightboxImg">
+                <div class="lightbox-caption" id="lightboxCaption"></div>
+            </div>
+            <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Travel Journal</span>
+                </div>
+                <h2 class="section-title">Stories &<br><span class="accent">Inspiration</span></h2>
+                <p class="section-subtitle">
+                    Insider guides, travel tips, and stories from the island of serendipity
+                </p>
+            </div>
+            
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts rendered via JS -->
+            </div>
+            
+            <div class="blog-cta">
+                <a href="#" class="btn btn-outline">
+                    <span>Read All Stories</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-tag">
+                        <span class="tag-line"></span>
+                        <span class="tag-text">Get in Touch</span>
+                    </div>
+                    <h2 class="section-title">Let's Plan Your<br><span class="accent">Sri Lankan Adventure</span></h2>
+                    <p class="contact-desc">
+                        Ready to embark on an unforgettable journey? Our travel designers are here 
+                        to craft your perfect Sri Lankan experience. Reach out and let's begin.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-detail">
+                                <h4>Visit Us</h4>
+                                <p>42 Galle Road, Colombo 03<br>Sri Lanka</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-detail">
+                                <h4>Call Us</h4>
+                                <p><a href="tel:+94771234567">+94 77 123 4567</a></p>
+                                <p><a href="tel:+94112345678">+94 11 234 5678</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-detail">
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:hello@avelonlanka.com">hello@avelonlanka.com</a></p>
+                                <p><a href="mailto:bookings@avelonlanka.com">bookings@avelonlanka.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-detail">
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a></p>
+                                <span class="contact-badge">Available 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h4>Follow Our Journey</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Pinterest">
+                                <i class="fab fa-pinterest-p"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="TripAdvisor">
+                                <i class="fab fa-tripadvisor"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-header">
+                            <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
+                            <p>We will respond within 24 hours</p>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" name="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" name="lastName" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" placeholder="+44 7700 900000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select name="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="booking">Booking Request</option>
+                                <option value="custom">Custom Tour Request</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" rows="5" placeholder="Tell us about your dream Sri Lankan journey..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <p class="form-privacy">
+                            <i class="fas fa-shield-alt"></i> Your data is protected and never shared.
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="contact-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798511757686!2d79.8486!3d6.9271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTUnMzcuNiJOIDc5wrA1MCc1NC45IkU!5e0!3m2!1sen!2slk!4v1600000000000!5m2!1sen!2slk"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Avelon Lanka Office Location"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <span class="logo-main">Avelon</span>
+                            <span class="logo-sub">Lanka</span>
+                        </a>
+                        <p class="footer-tagline">The Soul of Sri Lankan Travel</p>
+                        <p class="footer-desc">
+                            Crafting extraordinary journeys through the pearl of the Indian Ocean. 
+                            Authentic luxury, local expertise, timeless memories.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#packages">Tour Packages</a></li>
+                            <li><a href="#destinations">Destinations</a></li>
+                            <li><a href="#tour-builder">Custom Tours</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#blog">Travel Journal</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-col">
+                        <h4>Destinations</h4>
+                        <ul>
+                            <li><a href="#">Sigiriya</a></li>
+                            <li><a href="#">Ella</a></li>
+                            <li><a href="#">Kandy</a></li>
+                            <li><a href="#">Galle</a></li>
+                            <li><a href="#">Yala National Park</a></li>
+                            <li><a href="#">Nuwara Eliya</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-col">
+                        <h4>Experiences</h4>
+                        <ul>
+                            <li><a href="#">Luxury Escapes</a></li>
+                            <li><a href="#">Wildlife Safaris</a></li>
+                            <li><a href="#">Beach Holidays</a></li>
+                            <li><a href="#">Cultural Tours</a></li>
+                            <li><a href="#">Ayurveda & Wellness</a></li>
+                            <li><a href="#">Honeymoon Packages</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-newsletter">
+                        <h4>Stay Inspired</h4>
+                        <p>Subscribe for exclusive offers, travel inspiration, and insider tips.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="newsletter-input">
+                                <input type="email" placeholder="Your email address" required>
+                                <button type="submit" aria-label="Subscribe">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="footer-badges">
+                            <div class="badge">
+                                <i class="fas fa-award"></i>
+                                <span>TripAdvisor<br>Excellence</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-certificate"></i>
+                                <span>SLTB<br>Certified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        &copy; 2026 Avelon Lanka. All rights reserved. Crafted with 
+                        <i class="fas fa-heart"></i> in Sri Lanka.
+                    </p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/94771234567" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us</span>
+    </a>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-message" id="toastMessage">Message sent successfully!</div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>'''
+
+with open(f"{base_dir}/index.html", "w", encoding="utf-8") as f:
+    f.write(index_html)
+
+print("index.html created successfully!")
+print(f"File size: {len(index_html)} characters")
